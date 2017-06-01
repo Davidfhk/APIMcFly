@@ -17,7 +17,7 @@
 		</tr>
 	<?php endforeach; ?>
 		<tr>
-			<td colspan="3"><a href="">Añadir nueva nota</a></td>
+			<td colspan="3"><a href="nueva/nota">Añadir nueva nota</a></td>
 		</tr>
 		<tr>
 			<td colspan="3"><a href="">Inicio</a></td>
