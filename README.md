@@ -1,6 +1,12 @@
 # APIMcFly
 Creación de mi primera API, en mi caso lo hare utilizando el microframework Slim v2 (en desarrollo)
 
+Requisitos:
+
+o Composer (hacer un composer install sobre el archivo, para que descargue slim).
+
+o El nombre de la base de datos se llama api_mcfly, pero se puede cambiar en app/db/config.php
+
 --------------------------------------------------------------------------------------------------------------------------
 
 PHP API McFly
