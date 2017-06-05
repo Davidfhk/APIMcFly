@@ -13,14 +13,15 @@
 			<td><?= $nota['nombre']?></td>
 			<td><a href="">Editar</a></td>
 			<td><a href="">Borrar</a></td>
-			<td><a href="">Detalles</a></td>
+			<td><a href="nota/<?=$nota['id']?>">Detalles</a></td>
 		</tr>
 	<?php endforeach; ?>
+
 		<tr>
 			<td colspan="3"><a href="nueva/nota">Añadir nueva nota</a></td>
 		</tr>
 		<tr>
-			<td colspan="3"><a href="">Inicio</a></td>
+			<td colspan="3"><a href="../api_mcfly/">Inicio</a></td>
 		</tr>
 	</table>
 </body>
