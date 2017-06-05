@@ -40,3 +40,12 @@ $app->post('/nueva/nota', function() use ($app,$db){
 
 	$app->redirect('nota');
 });
+
+$app->get('/nota/:id', function(int $id) use ($app,$db){
+	$sql = $db->prepare("SELECT * FROM notas WHERE id = :id");
+	$sql->execute(array(':id' => $id));
+	$data = $sql->fetch(PDO::FETCH_ASSOC);
+	// $data = json_encode($data);
+	$app->render('nota.php', $data);
+});
+
