@@ -49,3 +49,10 @@ $app->get('/nota/:id', function(int $id) use ($app,$db){
 	$app->render('nota.php', $data);
 });
 
+$app->delete('/borrar/:id', function(int $id) use ($app,$db){
+
+	$sql = $db->prepare("DELETE FROM notas WHERE id = :id");
+	$sql->execute(array(':id' => $id));
+
+	$app->redirect('../notas');
+});
