@@ -16,13 +16,13 @@ $app->get('/notas', function() use ($app,$db){
 	$app->render('notas.php',array('notas' => $data));
 });
 
-// ----------Consulta para linkear al archivo nuevo.php, donde crearemos un nuevo usuario-----------
+// ----------Consulta para linkear al archivo nuevo.php, donde crearemos una nueva nota-----------
 
 $app->get('/nueva/nota', function() use ($app){
 	$app->render('nuevo.php');
 });
 
-// ----------Consulta para crear el nuevo usuario--------------------
+// ----------Consulta para crear una nueva nota--------------------
 
 $app->post('/nueva/nota', function() use ($app,$db){
 	$request = $app->request;
@@ -41,6 +41,8 @@ $app->post('/nueva/nota', function() use ($app,$db){
 	$app->redirect('nota');
 });
 
+// -----------------------Consulta para mostrar los detalles de la nota-------------------
+
 $app->get('/nota/:id', function(int $id) use ($app,$db){
 	$sql = $db->prepare("SELECT * FROM notas WHERE id = :id");
 	$sql->execute(array(':id' => $id));
@@ -48,6 +50,8 @@ $app->get('/nota/:id', function(int $id) use ($app,$db){
 	// $data = json_encode($data);
 	$app->render('nota.php', $data);
 });
+
+// -----------------------Consulta para borrar la nota-------------------
 
 $app->delete('/borrar/:id', function(int $id) use ($app,$db){
 
