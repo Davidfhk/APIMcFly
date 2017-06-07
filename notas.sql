@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-06-2017 a las 19:18:18
+-- Tiempo de generación: 07-06-2017 a las 14:38:45
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -29,15 +29,17 @@ SET time_zone = "+00:00";
 CREATE TABLE `notas` (
   `id` int(11) NOT NULL,
   `nombre` varchar(20) NOT NULL,
-  `descripcion` text NOT NULL
+  `descripcion` text NOT NULL,
+  `favorita` tinyint(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `notas`
 --
 
-INSERT INTO `notas` (`id`, `nombre`, `descripcion`) VALUES
-(1, 'Primera nota', 'balbalblablablablablablabalblablablablablabalblabalbalbalbalbalbalbalbalablablablablablablablablablabalbalablablablablabla');
+INSERT INTO `notas` (`id`, `nombre`, `descripcion`, `favorita`) VALUES
+(111, 'Pedro', '', 1),
+(112, 'David', '', 1);
 
 --
 -- Índices para tablas volcadas
@@ -57,7 +59,7 @@ ALTER TABLE `notas`
 -- AUTO_INCREMENT de la tabla `notas`
 --
 ALTER TABLE `notas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=116;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
