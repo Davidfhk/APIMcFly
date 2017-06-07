@@ -13,7 +13,7 @@
 	
 		<tr id="<?= $nota['id']?>">
 			<td><?= $nota['nombre']?></td>
-			<td><a href="">Editar</a></td>
+			<td><a href="editar/<?=$nota['id']?>">Editar</a></td>
 			<td><a id="borrar" href="" title="<?=$nota['id']?>">Borrar</a></td>
 			<td><a href="nota/<?=$nota['id']?>">Detalles</a></td>
 		</tr>
