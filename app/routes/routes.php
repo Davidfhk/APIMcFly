@@ -60,3 +60,42 @@ $app->delete('/borrar/:id', function(int $id) use ($app,$db){
 
 	$app->redirect('../notas');
 });
+
+// -----Consulta para mostrar en la vista de editar.php, la nota que vamos a editar------
+
+$app->get('/editar/:id', function(int $id) use ($app,$db){
+	$request = $app->request;
+	$sql = $db->prepare("SELECT * FROM notas WHERE id = :id" );
+	$sql->execute(array(':id' => $id));
+	$data = $sql->fetch(PDO::FETCH_ASSOC);
+	// $data = json_encode($data);
+	if (!$data) {
+		$app->halt(404, 'Nota no encontrado');
+	}
+	$app->render('editar.php', $data);
+});
+
+// -----------------------Consulta para editar la nota--------------------
+
+$app->put('/editar/:id', function(int $id) use ($app,$db){
+	$request = $app->request;
+	$nombre = $request->post('nombre');
+	$descripcion = $request->post('descripcion');
+
+	// $sql = $db->prepare("UPDATE notas SET nombre = ':nombre',descripcion = ':descripcion' WHERE id = ':id'");
+
+
+	// $modificado = $sql->execute(array(':id' => $id, ':nombre' => $nombre, ':descripcion' => $descripcion));
+
+	$sql = $db->prepare("UPDATE notas SET nombre = '$nombre',descripcion = '$descripcion' WHERE id = '$id'");
+
+
+	$modificado = $sql->execute();
+	if ($modificado) {
+		$app->flash('message','Nota modificada con exito');
+	}else{
+		$app->flash('error','Error al modificar la nota');
+	}
+
+	$app->redirect("$id");
+});
