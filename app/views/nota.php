@@ -10,5 +10,9 @@
 			<p><?= $nombre ?></p>
 		<h3>Descripción</h3>
 			<p><?= $descripcion?></p>
+<form action="" method="POST">
+	<label><input type="checkbox" name="favorita" value="1" <?php if($favorita){echo 'checked';}?>>Guardar en favoritas</label></br>
+	<input type="submit" name="guardar" value="Guardar">
+</form>
 </body>
 </html>
