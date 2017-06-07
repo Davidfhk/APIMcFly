@@ -1,5 +1,5 @@
 # APIMcFly
-Creación de mi primera API, en mi caso lo hare utilizando el microframework Slim v2 (en desarrollo)
+Creación de mi primera API, utilizando el microframework Slim v2.
 
 Requisitos:
 
