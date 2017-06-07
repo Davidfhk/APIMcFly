@@ -99,3 +99,29 @@ $app->put('/editar/:id', function(int $id) use ($app,$db){
 
 	$app->redirect("$id");
 });
+
+// -----------------------Consulta para guardar la nota favorita--------------------
+
+$app->post('/nota/:id', function(int $id) use ($app,$db){
+	$request = $app->request;
+	$favorita = $request->post('favorita');
+	if (!isset($favorita)) {
+		$favorita = 0;
+	}
+	$sql = $db->prepare("UPDATE notas SET favorita = $favorita WHERE id = '$id'");
+	$sql->execute();
+
+	$app->redirect('../notas');
+
+});
+
+// -----------------------Consulta para mostrar los usuarios favoritas--------------------
+
+$app->get('/favoritas', function() use ($app,$db){
+	$favorita = 1;
+	$sql = $db->prepare("SELECT * FROM notas WHERE favorita = :favorita");
+	$sql->execute(array(':favorita' => $favorita));
+	$data = $sql->fetchAll(PDO::FETCH_ASSOC);
+	// $data = json_encode($data);
+	$app->render('notas_fav.php', array('notas' => $data));
+});
